@@ -1,0 +1,35 @@
+version: 2
+
+sources:
+
+  - name: GOOGLE_SHEETS # name of the source 
+    schema: GOOGLE_SHEETS # this is the schema our raw data lives in
+    database: ALUMNO30_DEV_BRONZE_DB # this is the name of our database
+
+    quoting:
+      database: false
+      schema: false
+      identifier: false
+
+    freshness:
+      warn_after: {count: 600, period: day}
+      error_after: {count: 600, period: day}
+
+    tables:
+
+      - name: BUDGET
+        loaded_at_field: _fivetran_synced
+        columns:
+          - name: _ROW
+          - name: QUANTITY
+          - name: MONTH
+          - name: PRODUCT_ID
+          - name: _fivetran_synced
+
+      - name: USERS
+        loaded_at_field: _fivetran_synced
+        columns:
+          - name: NOMBRE
+          - name: DNI
+          - name: EMAIL
+          - name: FECHA_ALTA_SISTEMA
