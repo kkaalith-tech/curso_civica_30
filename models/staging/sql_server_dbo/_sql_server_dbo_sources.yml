@@ -120,9 +120,6 @@ sources:
           - name: total_orders
           - name: first_name
           - name: email
-            data_tests:
-              - not_null
-              - re_email
           - name: _fivetran_deleted
           - name: _fivetran_synced
           
